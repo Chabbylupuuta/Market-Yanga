@@ -1,0 +1,11 @@
+{
+  "name": "market-yanga-workspace",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix Market-Yanga start",
+    "web": "npm --prefix Market-Yanga run web",
+    "android": "npm --prefix Market-Yanga run android",
+    "ios": "npm --prefix Market-Yanga run ios",
+    "lint": "npm --prefix Market-Yanga run lint"
+  }
+}
