@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function Button({
   buttonStyle,
@@ -10,6 +10,8 @@ export default function Button({
   loading = false,
   disabled = false,
   loadingColor = '#fff',
+  icon = null,
+  iconColor = '#fff',
 }) {
   return (
     <Pressable
@@ -28,7 +30,10 @@ export default function Button({
       {loading ? (
         <ActivityIndicator size="small" color={loadingColor} />
       ) : (
-        <Text style={[styles.text, textStyle]}>{title}</Text>
+        <View style={styles.content}>
+          {icon}
+          <Text style={[styles.text, textStyle, icon && styles.textWithIcon]}>{title}</Text>
+        </View>
       )}
     </Pressable>
   );
@@ -58,5 +63,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
+  },
+  textWithIcon: {
+    marginLeft: 8,
+  },
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

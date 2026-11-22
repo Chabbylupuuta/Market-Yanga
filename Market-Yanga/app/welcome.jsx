@@ -15,12 +15,17 @@ export default function Welcome() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.header}>
-          <View style={styles.logoSlot} accessibilityLabel="Logo placeholder">
-            <Text style={styles.logoSlotText}>LOGO</Text>
+          <View style={styles.brandMark} accessibilityElementsHidden>
+            <View style={[styles.markBar, styles.markGreen]} />
+            <View style={[styles.markBar, styles.markOrange]} />
+            <View style={[styles.markBar, styles.markRed]} />
           </View>
           <View style={styles.brand}>
             <Text style={styles.brandName}>Market Yanga</Text>
-            <View style={styles.brandUnderline} />
+            <Text style={styles.brandCaption}>ZAMBIA, IN EVERY WAY</Text>
+          </View>
+          <View style={styles.headerBadge}>
+            <Text style={styles.headerBadgeText}>LOCAL</Text>
           </View>
         </View>
 
@@ -47,20 +52,21 @@ export default function Welcome() {
 
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Explore Market Yanga"
-          onPress={() => router.replace('/')}
+          accessibilityLabel="Get started with Market Yanga"
+          onPress={() => router.push('/account')}
           style={({ pressed }) => [
             styles.button,
             pressed && styles.buttonPressed,
           ]}
         >
-          <Text style={styles.buttonText}>Explore the market</Text>
+          <Text style={styles.buttonText}>Get started</Text>
           <View style={styles.arrowCircle}>
             <Text style={styles.buttonArrow}>→</Text>
           </View>
         </Pressable>
 
         <View style={styles.zambianAccent} />
+        <Text style={styles.footer}>Good things grow when we shop local.</Text>
       </ScrollView>
     </ScreenWrapper>
   );
@@ -72,30 +78,40 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingBottom: 18,
-    backgroundColor: '#F7F9F5',
+    backgroundColor: 'transparent',
   },
   header: {
     width: '100%',
-    height: 64,
+    minHeight: 72,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  logoSlot: {
-    width: 48,
-    height: 48,
-    alignItems: 'center',
+  brandMark: {
+    width: 42,
+    height: 42,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderColor: '#8A9B86',
-    borderRadius: 12,
-    backgroundColor: '#FFFFFF',
+    padding: 9,
+    borderRadius: 14,
+    backgroundColor: '#174A22',
   },
-  logoSlotText: {
-    color: '#8A9B86',
-    fontSize: 9,
-    fontWeight: '800',
-    letterSpacing: 1,
+  markBar: {
+    width: 5,
+    marginHorizontal: 2,
+    borderRadius: 3,
+  },
+  markGreen: {
+    height: 13,
+    backgroundColor: '#198A00',
+  },
+  markOrange: {
+    height: 20,
+    backgroundColor: '#EF7D00',
+  },
+  markRed: {
+    height: 16,
+    backgroundColor: '#DE2010',
   },
   brand: {
     marginLeft: 12,
@@ -106,16 +122,29 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontWeight: '800',
   },
-  brandUnderline: {
-    width: 34,
-    height: 3,
+  brandCaption: {
     marginTop: 3,
-    borderRadius: 2,
-    backgroundColor: '#EF7D00',
+    color: '#748174',
+    fontSize: 9,
+    fontWeight: '700',
+    letterSpacing: 1.4,
+  },
+  headerBadge: {
+    marginLeft: 'auto',
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 14,
+    backgroundColor: '#E8F1E5',
+  },
+  headerBadgeText: {
+    color: '#198A00',
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 1,
   },
   heroCard: {
     width: '100%',
-    height: 300,
+    height: 280,
     marginTop: 8,
     overflow: 'hidden',
     borderRadius: 28,
@@ -191,7 +220,7 @@ const styles = StyleSheet.create({
     paddingLeft: 22,
     paddingRight: 8,
     borderRadius: 30,
-    backgroundColor: '#198A00',
+    backgroundColor: '#174A22',
   },
   buttonPressed: {
     opacity: 0.9,
@@ -216,10 +245,17 @@ const styles = StyleSheet.create({
     lineHeight: 28,
   },
   zambianAccent: {
-    width: 72,
+    width: 68,
     height: 5,
     marginTop: 16,
     borderRadius: 3,
-    backgroundColor: '#DE2010',
+    backgroundColor: '#EF7D00',
+  },
+  footer: {
+    marginTop: 14,
+    color: '#5F6B60',
+    fontSize: 12,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
